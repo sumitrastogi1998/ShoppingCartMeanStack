@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"><img src="../assets/images/Corona.jpeg" alt="No image" height="50" width="70"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" (click)="isShown=!isShown" [attr.aria-expanded]="isShown" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" [ngClass]="{'show':isShown}" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active" style="color: darkgoldenrod; font-weight: bold">Home</a>
+        <a class="nav-link" routerLink="/items" routerLinkActive="active" style="color: darkgoldenrod; font-weight: bold">Items</a>
+        <a class="nav-link" routerLink="/suggestion" routerLinkActive="active" style="color: darkgoldenrod; font-weight: bold">Suggestions</a>
+        <a class="nav-link" routerLink="/testingfile" routerLinkActive="active" style="color: darkgoldenrod; font-weight: bold" *ngIf=(this.auth.isAdmin)>Add Product</a>
+      
+    </ul>
+    <ul class="navbar-nav">
+        <a class="nav-link" (click)="isShown=false" style="color: darkgoldenrod;font-weight: bold" *ngIf=!(this.auth.loggedIn()) routerLink="/login" routerLinkActive="active">Login</a>
+        <a class="nav-link" (click)="isShown=false" style="color: darkgoldenrod;font-weight: bold" *ngIf=!(this.auth.loggedIn()) routerLink="/register" routerLinkActive="active">Register</a>
+        <a class="nav-link" (click)="isShown=false" style="color: darkgoldenrod;font-weight: bold" *ngIf=(this.auth.loggedIn()) routerLink="/login" routerLinkActive="active" (click)="this.auth.removeUser()">Logout</a>
+    </ul>
+  </div>
+</nav>    
+
+
+<div class="container">
+  <router-outlet></router-outlet>            
+</div>

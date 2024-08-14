@@ -1,0 +1,42 @@
+<div class="py-5">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <span class="anchor" id="formLogin"></span>
+      
+            <!-- form card login -->
+            <div class="card rounded-0">
+              <div class="card-header">
+                <h3 class="mb-0">Add Address</h3>
+              </div>
+              <div class="card-body">
+                <form class="form" #loginForm="ngForm">
+                  <div class="form-group">
+                    <label for="uname1">Street</label>
+                    <input type="text" class="form-control rounded-0" [(ngModel)]="this.street"  placeholder="Enter Street" name="street" required>
+                  </div>
+                  <div class="form-group">
+                    <label>City</label>
+                    <input type="text" class="form-control rounded-0" [(ngModel)]="this.city" placeholder="Enter City" name="city" required>
+                  </div>
+                  <div class="form-group">
+                        <label for="uname1">State</label>
+                        <input type="text" class="form-control rounded-0" [(ngModel)]="this.state"  placeholder="Enter State" name="state" required>
+                      </div>
+                      <div class="form-group">
+                        <label>PinCode</label>
+                        <input type="number" class="form-control rounded-0" [(ngModel)]="this.pincode" placeholder="Enter PinCode" name="pincode" required>
+                      </div>
+                  <input type="submit" [disabled]="loginForm.form.invalid" (click)="paymentSuccess()" class="btn btn-success float-right" value="Place Order">
+                </form>
+              </div>
+              
+              <!--/card-block-->
+            </div>
+            <!-- /form card login -->
+            
+          </div>
+      
+      
+        </div>
+      </div>
+      
