@@ -1,0 +1,32 @@
+<div class="text-right">
+    <button type="button" [disabled]="this.cartService.total===0" class="btn btn-primary" (click)="checkOut()" style="margin-top: 10px; border-radius: 20px">CheckOut</button>
+</div>
+
+<table class="table table-striped" style="margin-top: 20px">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Items</th>
+      <th scope="col">Price(Per Qty)</th>
+      <th scope="col">Qty</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let item of this.cartService.items; index as i">
+    <tr *ngIf="item.counter>0">
+      <th scope="row">{{i+1}}</th>
+      <td>{{item.name}}</td>
+      <td>{{item.price}}</td>
+      <td>
+        <input class="btn btn-primary" [disabled]="item.isDisabled" type="button" value="-" (click)="decrementItem(item.name,item.counter)"> {{item.counter}}
+        <input class="btn btn-primary" type="button" value="+" (click)="incrementItem(item.name,item.counter)">
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th id="total" colspan="3">Total :</th>
+      <td>{{this.cartService.total}}</td>
+    </tr>
+  </tfoot>
+
+</table>

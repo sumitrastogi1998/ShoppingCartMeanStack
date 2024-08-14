@@ -1,0 +1,52 @@
+<div class="text-right">
+    <button type="button" class="btn btn-primary" style="margin-top: 10px; border-radius: 20px" (click)="displayItems()">Go To Cart</button>
+</div>
+<!--
+<div class="row mt-5">
+    <div class="col-md-4 mb-3" *ngFor="let item of this.cartService.items; index as i">
+        <div class="card text-center">
+            <div class="card-body" style="background-color: darkorange">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-text">
+                    <img [src]="item.imagePath" alt="No image" height="100" width="100">
+                </p>
+                <p class="text-muted" style="color: darkred; font-style: italic">{{item.price | currency:"₹"}}</p>
+            </div>
+            <div class="card-footer text-muted">
+                <input class="btn btn-primary" [disabled]="item.isDisabled" type="button" value="-" (click)="decrementItem(this.item,i)"> {{item.counter}}
+                <input class="btn btn-primary" type="button" value="+" (click)="incrementItem(this.item,i)">
+            </div>
+        </div>
+    </div>
+</div>
+-->
+<div class="container user-table">
+        <!-- No data message -->
+        <div class="alert alert-success text-center" role="alert" *ngIf="Users.length <= 0">
+            No Products available currently!
+        </div>
+    
+        <div><label>&nbsp;</label><br><input type="text" name="name" placeholder="Search By Name" [(ngModel)]="searchByName">
+    
+            <div class="row mt-5">
+                <div class="col-md-4 mb-3" *ngFor="let user of Users | paginate: config | bookSearch:searchByName; let i = index">
+                    <div class="card text-center">
+                        <div class="card-body" style="background-color: darkorange">
+                            <h5 class="card-title">{{user.name}}</h5>
+                            <p class="card-text">
+                                <img [src]="user.avatar" alt="user.name" height="100" width="100">
+                            </p>
+                            <p class="text-muted" style="color: darkred; font-style: italic">{{user.price | currency:"₹"}}</p>
+                        </div>
+                        <div class="card-footer text-muted">
+                                <input class="btn btn-primary" [disabled]="user.isDisabled" type="button" value="-" (click)="decrementItem(this.user,((config.currentPage - 1) * config.itemsPerPage)+i)"> {{user.counter}}
+                                <input class="btn btn-primary" type="button" value="+" (click)="incrementItem(this.user,((config.currentPage - 1) * config.itemsPerPage)+i)">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        
+        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+    
+    </div>
+    </div>
